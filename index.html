@@ -162,6 +162,10 @@
         padding: 8px;
       }
 
+      .modal {
+        overflow-y:auto;
+      }
+
       .modalStuff {
           position: relative;
           width: 90%;
@@ -176,8 +180,19 @@
           transform: none;
       }
 
+      .close {
+        position: fixed;
+        top: 15px;
+        right: 15px;
+        z-index: 9999;
+      }
+
       .inModal {
-          width: 80%;
+        width: 100%;
+        max-width: 500px;
+
+        max-height: 60vh;
+        object-fit: contain;
       }
 
       #portfolioText,
