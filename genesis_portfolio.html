@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>GENESIS | PORTFOLIO</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Lexend' rel='stylesheet'>
+    </head>
+    <style>        
+        .sideNav {
+            text-align: center;
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 2;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            padding-top: 40px;
+            transition: 0.5s;
+        }
+
+        .sideNav p {
+            margin-top: 0px;
+            margin-bottom: 0px;
+            padding: 20px 20px 20px 20px;
+            text-decoration: none;
+            font-family: Futura,Trebuchet MS,Arial,sans-serif; 
+            font-weight: bold;
+            font-size: 22px;
+            letter-spacing: 2px;
+            color: #FCE100;
+            display: block;
+            transition: 0.3s;
+        }
+        
+        .sideNav a {
+            padding: 20px 20px 20px 20px;
+            border-bottom: 4px dashed #868686;
+            text-decoration: none;
+            font-family: 'Nunito';
+            font-size: 17px;
+            color: #FCE100;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sideNav a:hover {
+            color: #D7C000;
+        }
+
+        a.btn, .sideNav a.btn {
+            background-color: #7265F1;
+            border:none;
+            color: white;
+            padding: 8px 15px;
+            cursor: pointer;
+            font-family: 'Lexend';
+            font-size: 20px;
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-top: 50px;
+        }
+
+        a.btn {
+            margin-left: 500px;
+            margin-top:50px;
+            padding: 8px 15px;
+        }
+
+
+        .sideNav a.btn:hover {
+            background-color: #4A39E7;
+        }
+
+        .sideNav .closeBtn {
+            position: absolute;
+            top: 0;
+            right: 5px;
+            font-size: 30px;
+            margin-left: 40px;
+            border-bottom: none;
+        }
+
+        .openBtn {
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #DEB200;
+            color: #111;
+            padding: 10px 15px;
+            border: none;
+        }
+
+        .openBtn:hover {
+            background-color: #FCE100;
+        }
+
+        .main {
+            transition: margin-left .5s;
+            padding:20px;
+        }
+
+        @media screen and (max-height: 450px) {
+        .sidebar {padding-top: 15px;}
+        .sidebar a {font-size: 18px;}
+        }
+
+        .shinyHead{
+        height:30vh;
+        display: flex;
+        flex-direction:column;
+        animation: floating 3s infinite;
+        }
+
+        .shiny {
+            display:flex;
+            z-index: 1;
+            transform: translateY(-5%);
+            transition: transform 0.2s;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .shiny:hover {
+            transform: scale(1.1);
+            filter: drop-shadow(7px 7px rgb(252, 225, 0));
+        }
+
+        @keyframes floating {
+        0%{transform: translateY(-5%); transition: ease 1s;}
+        50%{transform: translateY(5%); transition: ease 1s;}
+        100%{transform: translateY(-5%); transition: ease 1s;}
+        }
+
+        hr.divider {
+            border-bottom: 7px solid #868686;
+            border-radius: 4px;
+        }
+
+        .section-header, strong {
+            color:#DEB200;
+            font-family:'Lexend';
+            font-size: 22px;
+        }
+
+        header {
+            text-align: center;
+            color:#DEB200;
+            font-family:'Lexend';
+        }
+
+        h1 {
+            color:#FCE100;
+            text-decoration-line: underline;
+            text-underline-offset: 5px;
+            font-family: Futura,Trebuchet MS,Arial,sans-serif; 
+            font-size: 60px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 0.5px;
+            text-align: center;
+        }
+
+        h3 {
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+
+        body {
+            background-color: #4D4C54;
+            position: relative;
+        }
+
+        body p, li, a, .caption-container {
+            font-family: 'Nunito';
+            font-size: 18px;
+            color:aliceblue;
+            font-weight: 400;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        body li {
+            padding: 5px;
+        }
+
+        .collapsible {
+            border-style: double;
+            border-color: #FCE100;
+            border-radius: 8px;
+            background-color: #4D4C54;
+            cursor: pointer;
+            padding: 10px;
+            width: 100%;
+            text-align: left;
+            outline:none;
+            transition: 0.1s;
+            margin-bottom: 15px;
+        }
+
+        .active, .collapsible:hover {
+            background-color: #76767c;
+        }
+
+        .texts {
+            border-style: hidden;
+            border-color: #FCE100;
+            border-radius: 8px;
+            padding: 0 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+        }
+
+        ul {
+            list-style-type: square;
+        }
+
+        ul.sub {
+            list-style-type: disc;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .imageContainer {
+            position: relative;
+        }
+
+        .imageSlides {
+            display: none;
+            text-align: center;
+        }
+
+        .imageSlides img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+        }
+
+        .cursor {
+            cursor: pointer;
+        }
+        
+        .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 40%;
+        width: auto;
+        padding: 10px;
+        margin-top: 0px;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+        -webkit-user-select: none;
+        }
+
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+            }
+    
+        .prev:hover, .next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+        }    
+
+        .caption-container {
+            text-align: center;
+            background-color: #76767c;
+            padding: 1px 10px;
+            margin-bottom: 1%;
+        }
+        
+        .imageSequence {
+            font-family: 'Nunito';
+            font-size: 18px;
+            color:aliceblue;
+            padding: 20px 20px;
+            position: absolute;
+            top: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .imageContainer {
+                padding: 0 10px;
+            }
+            .imageSlides img {
+                width: 100%;
+                max-width: 100%;
+            }
+            .caption-container {
+                margin: 10px;
+                padding: 10px;
+            }
+            .imageSequence {
+                font-size: 14px;
+                padding: 10px;
+            }
+
+            .prev, .next {
+                font-size: 16px;
+                padding: 8px;
+            }
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Six columns side by side */
+        .column {
+            float: left;
+            width: 16.66%;
+        }
+
+        /* Add a transparency effect for thumnbail images */
+        .demo {
+            opacity: 0.6;
+        }
+
+        .active,
+            .demo:hover {
+            opacity: 1;
+        }
+    
+        .borderActive {
+            border-style: double;
+            transition: max-height 0.2s ease-out;
+            margin-bottom: 15px;
+        }
+
+        div.scroll-list {
+            background-color: #3c3c43;
+            overflow:auto;
+            white-space: nowrap;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        div.scroll-list img {
+            padding:10px;
+            width: 35%;
+            height: 35%;
+        }
+
+        .container {
+            height: 75px;
+            position: relative;
+            border: 5px double #fce100;
+            border-radius: 8px;
+        }
+
+        .centered {
+            margin:0;
+            position: absolute;
+            top: 50%;
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+    </style>
+    <body>
+        <div id="sidenav" class="sideNav">
+            <p>GENESIS LIM</p>
+            <a href="javascript:void(0)" class="closeBtn" onclick="closeNav()">&times;</a>
+            <a href="#aboutMe">About Me</a>
+            <a href="#software">Software Expertise</a>
+            <a href="#projects">Games and Uni Projects</a>
+            <a href="#other">Other Projects</a>
+            <a href="#works">Past Work Experience</a>
+            <a href="Lim Yu Hao CV.pdf" class="btn" download>Download CV</a>
+        </div>
+        <div id="mainPage" class="main">
+            <button class="openBtn" onclick="openNav()">&#9776</button>
+            <header>
+                <div class="shinyHead">
+                    <img src="shiny.png" alt="Shiny" class="shiny" width="275vw" height="275vh">
+                </div>
+                <h1>GENESIS LIM</h1>
+                <h2>GAME, NARRATIVE AND MECHANIC DESIGNER | WRITER</h2>
+            </header>
+            <hr class="divider">
+            <section id="aboutMe">
+                <h2 class="section-header">
+                    <span>✨</span> ABOUT ME
+                </h2>
+                <button type="button" class="collapsible">
+                    <p>My name is Moses Lim, but I go by many names. Some call me ShinGen, some call me Shinx; but here, just call me Genesis!</p>
+                    <p>I'm an aspiring designer who's dedicated to the art of crafting intricate concepts, gameplay, mechanics and narratives for video games. 
+                        There's nothing I love more than telling emotionally rich stories, so if you're seeking a storyteller who can also craft a wicked game, you've come to the right place!
+                    </p>
+                </button>
+                <div class="texts">
+                    <ul>
+                        <li>
+                            I'm currently undergoing tertiary education at Asia Pacific University of Technology & Innovation. I just finished my second year, and will begin the final year of my Game Development Course
+                            in 2027.
+                        </li>
+                        <li>
+                            I specialise in C# and Python, though I'm currently learning JavaScript to further my programming knowledge!
+                        </li>
+                        <li>
+                            With Python, I've coded a personal Discord-based server bot. It's currently defunct because personal servers are pricey...
+                        </li>
+                        <li>
+                            I'm capable of speaking four languages: fluent in English and Chinese, while having a solid grasp of Bahasa Malaysia and Cantonese.
+                        </li>
+                        <li>
+                            Throughout my studies in college, I've developed into a capable leader who excels in man-management. 
+                        </li>
+                        <li>
+                            I'm resilient and incredibly self-driven -
+                            Once I acquire new knowledge, I become relentless in seeking improvements and further understanding of the task assigned to me.
+                        </li>
+                        <li>
+                            As a bonus, I'm an intuitive learner who can pick up new concepts very quickly.
+                        </li>
+                        <li>
+                            In my spare time, I host public events on Discord like karaoke and art exchanges. I'm currently running an ORG (Online Reality Game) called Sonicvivor, based on the TV show Survivor.
+                        </li>
+                        <li>
+                            I'm also a huge music enthusiast! I'm a certified level 5 acoustic guitarist, and I'm a beginner on drums.
+                        </li>
+                        <li>
+                            I occasionally write reviews on <a href="https://backloggd.com/u/shingenx">Backloggd.com</a> for games I play: most of these reviews centralise on a core narrative theme I felt tied well to the mechanics presented by the game. 
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <hr class="divider">
+            <section id="software">
+                <h2 class="section-header">
+                    <span>🖱️</span> SOFTWARE EXPERTISE
+                </h2>
+                <button type="button" class="collapsible">
+                    <h3 class="section-header">Unity Engine</h3>
+                </button>
+                <div class="texts">
+                    <ul>
+                        <li>
+                            Enabled dynamic editing of tilemaps during application runtime for a top-down tower defense game.
+                            In game, it enabled cursor-sensitive input that provides output only when the user interacts with specific tiles.
+                            When a tile is configured, tilemap logic is utilised to update the appearance of the tile in real time.
+                        </li>
+                        <li>
+                            Created a branching waypoint system that can be manipulated in Unity Editor that allowed NPC enemies to randomly choose alternating pathways to move towards. 
+                            Branching waypoints are toggled by enabling the On-Scene GUI, which create differently coloured Gizmos on the scene's GUI.
+                        </li>
+                        <li>
+                            Implemented thematically compliant 2Dcharacter controllers using RigidBody2D and CapsuleCollider2D physics as well as Unity Engine's Input System - 
+                            with mechanically intrinsic movement skills and narrative-compliant audiovisual elements (e.g. changing sprites while performing action, accompanied by a suiting sound effect). 
+                            For example, a directional dash that can break objects and a grappling hook that renders a line between the character and the targeted point while pulling the character to the target point.
+                            : with all abilities consumable and recharged using in-game objects. 
+                        </li>
+                        <li>
+                            Designed a wide variety of environmental hazards and objects that have unique interactions with the character controller and take advantage of Unity Engine's built-in Event System.
+                            For example, falling spikes that only activate when sensing the character controller below it, spikes that automatically protrude and retract at fixed intervals,
+                            and grenades with accurate throwing physics that renders a line to depict its trajectory when thrown, that also has dynamic explosion damage and knockback scaling on enemies.
+                        </li>
+                        <li>
+                            Implemented essential UI elements for 3D first-person games using TextMeshPro and Audio Mixer. Examples include an options menu and a real-time updated objective tracking bar.
+                        </li>
+                        <li>
+                            Made engaging, dungeon-themed level design for both 2D / 3D levels.
+                        </li>
+                    </ul>
+                </div>
+                <button type="button" class="collapsible">
+                    <h3 class="section-header">Unreal Engine 5</h3>
+                </button>
+                <div class="texts">
+                    <ul>
+                        <li>
+                            Designing a 3D top-down character controller using Unreal Engine's new Enhanced Input System and applying it for use with an orthographic camera. 
+                            The character controller was implemented with core logic such as basic movement controls, kill states as well as usage of throwable objects.
+                        </li>
+                        <li>
+                            The character also features a cloak that when equipped, drains a UI meter based on how long the cloak is equipped for. The UI meter is also programmed to recharge when the cloak is disabled.
+                        </li>
+                        <li>
+                            Created interactable objects using Unreal Engine's Blueprint Visual Scripting. Objects include functionalities such as collision-based HUD elements, spawning on player's hand
+                            when input is performed, collision-based destruction of the character controller, and applying physics when being thrown.
+                        </li>
+                        <li>
+                            Utilising NavMesh functionalities to implement enemy AI that patrols the area of a game level and chases after the character controller when they enter their field of vision.
+                        </li>
+                    </ul>
+                </div>
+                <button type="button" class="collapsible">
+                    <h3 class="section-header">Adobe Photoshop</h3>
+                </button>
+                <div class="texts">
+                    <ul>
+                        <li>
+                            Created logo graphics as well as banners for my own Discord-hosted events.
+                        </li>
+                        <li>
+                            Designed trading cards for a tabletop game I conceptualised for a university project.
+                        </li>
+                    </ul>
+                    <div class="imageContainer">
+                        <div class="imageSlides">
+                            <div class="imageSequence">1/9</div>
+                                <img src="photoshop/Sonicvivor Season 1.png" style="width:20%">
+                        </div>
+                        <div class="imageSlides">
+                            <div class="imageSequence">2/9</div>
+                                <img src="photoshop/Sonicvivor Season 2.png" style="width:20%">
+                        </div>
+                        <div class="imageSlides">
+                            <div class="imageSequence">3/9</div>
+                                <img src="photoshop/Sonicvivor Hub.png" style="width:20%">
+                        </div>
+                        <div class="imageSlides">
+                            <div class="imageSequence">4/9</div>
+                                <img src="photoshop/Cast Banner.png" style="width:20%">
+                        </div>
+                        <div class="imageSlides">
+                            <div class="imageSequence">5/9</div>
+                                <img src="photoshop/Episode Banner.png" style="width:20%">
+                        </div>
+                        <div class="imageSlides">
+                            <div class="imageSequence">6/9</div>
+                                <img src="photoshop/ShowBiz Card Background.png" style="width:20%">
+                        </div>
+                        <div class="imageSlides">
+                            <div class="imageSequence">7/9</div>
+                                <img src="photoshop/Genre Card.png" style="width:20%">
+                        </div>
+                        <div class="imageSlides">
+                            <div class="imageSequence">8/9</div>
+                                <img src="photoshop/Crew Card.png" style="width:20%">
+                        </div>
+                        <div class="imageSlides">
+                            <div class="imageSequence">9/9</div>
+                                <img src="photoshop/Action Card.png" style="width:20%">
+                        </div>
+                        <a class = "prev" onclick="plusSlides(-1)">&#10094;</a>
+                        <a class = "next" onclick="plusSlides(1)">&#10095;</a>
+                    </div>
+                    <div class="caption-container">
+                        <p id="caption"></p>
+                    </div>
+
+                    <div class="row">
+                        <div class="column">
+                            <img class="demo cursor" src="photoshop/Sonicvivor Season 1.png" style="width:60%" onclick="currentSlide(1)" alt="Sonicvivor Season 1">
+                        </div>
+                        <div class="column">
+                            <img class="demo cursor" src="photoshop/Sonicvivor Season 2.png" style="width:60%" onclick="currentSlide(2)" alt="Sonicvivor Season 2">
+                        </div>
+                        <div class="column">
+                            <img class="demo cursor" src="photoshop/Sonicvivor Hub.png" style="width:60%" onclick="currentSlide(3)" alt="Sonicvivor Hub">
+                        </div>
+                        <div class="column">
+                            <img class="demo cursor" src="photoshop/Cast Banner.png" style="width:60%" onclick="currentSlide(4)" alt="Cast Banner">
+                        </div>
+                        <div class="column">
+                            <img class="demo cursor" src="photoshop/Episode Banner.png" style="width:60%" onclick="currentSlide(5)" alt="Episode Banner">
+                        </div>
+                        <div class="column">
+                            <img class="demo cursor" src="photoshop/ShowBiz Card Background.png" style="width:60%" onclick="currentSlide(6)" alt="ShowBiz Card Background">
+                        </div>
+                        <div class="column">
+                            <img class="demo cursor" src="photoshop/Genre Card.png" style="width:60%" onclick="currentSlide(7)" alt="Genre Card">
+                        </div>
+                        <div class="column">
+                            <img class="demo cursor" src="photoshop/Crew Card.png" style="width:60%" onclick="currentSlide(8)" alt="Crew Card">
+                        </div>
+                        <div class="column">
+                            <img class="demo cursor" src="photoshop/Action Card.png" style="width:60%" onclick="currentSlide(9)" alt="Action Card">
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="collapsible">
+                    <h3 class="section-header">FireAlpaca64</h3>
+                </button>
+                <div class="texts">
+                    <ul>
+                        <li>
+                            Illustrated various character art, environmental art and character reference sheets.
+                        </li>
+                    </ul>
+                    <div class="scroll-list">
+                        <img src="firealpaca/shiny jan 2026.png" alt="Shiny Art">
+                        <img src="firealpaca/4ccub.png" alt="Christmas Sketch">
+                        <img src="firealpaca/beach background.png" alt="Beach Background">
+                        <img src="firealpaca/paper meets sketch.png" alt="Paper Mario Environment Redraw">
+                        <img src="firealpaca/shiny ref.png" alt="Shiny Reference Sheet">
+                        <img src="firealpaca/kris ref 2025.png" alt="Kris Reference Sheet">
+                    </div>
+                </div>
+                <button type="button" class="collapsible">
+                    <h3 class="section-header">Other Software</h3>
+                </button>
+                <div class="texts">
+                    <ul>
+                        <li>
+                            Z-Brush - Foundation Level 3D Character Modelling
+                        </li>
+                        <li>
+                            Adobe Substance 3D Painter
+                        </li>
+                        <li>
+                            Autodesk 3DS Max - Office Environment Modelling, 3D Mech Model
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <hr class="divider">
+            <section id ="projects">
+                <h2 class="section-header">
+                    <span>🎮</span> GAMES AND UNI PROJECTS
+                </h2>
+                <button type="button" class="collapsible">
+                    <h3 class="section-header">Game Projects</h3>
+                </button>
+                <div class="texts">
+                    <ul>
+                        <li>
+                            <strong>The Long Take</strong> <br>
+                            <a href="https://lakshmanragu.itch.io/the-long-take-legacy">itch.io Page      </a>  
+                            <a href="https://www.youtube.com/watch?v=iAqi7DW196o">Gameplay Video</a> <br>
+                            A 2D action platformer made in Unity 2022 depicting a stuntman traversing through a dungeon while a director obsessed over filming the journey in a single take berates 
+                            his every failure. <br>
+                            Contributions:
+                            <ul class="sub">
+                                <li>Main narrative design, including the concept and premise of the game's story.</li>
+                                <li>Voice actor for the director.</li>
+                                <li>Scripting of enemy movement and kill script.</li>
+                                <li>Creation of obstacles, namely the spikes and falling stalagmites that only trigger when the player stands beneath it.</li>
+                                <li>Level design of the first half of the game.</li>
+                                <img src="games/the one take.png" alt="The Long Take" width="40%" height="40%">
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>The Fool's Folly</strong> <br>
+                            <a href="https://www.youtube.com/watch?v=GVwfUGcL7tQ">Gameplay Video</a> <br>
+                            A 2D puzzle platformer made in Unity 6.3 depicting a pawn playing double agent for both the Black Agency and White Agency, completing acts of sabotage against both parties
+                            whilst being completely unaware of the sinister truth that lies beneath the surface of his operations...<br>
+                            Contributions:
+                            <ul class="sub">
+                                <li>Main narrative design, including the game's concept and the plot of the game.</li>
+                                <li>Main gameplay design, including the core gameplay mechanics, art direction, and level design philosophy: with black levels representing 
+                                    more open, option-centric exploration, and white levels focusing on tightly-designed puzzle boxes with a limited timer.
+                                </li>
+                                <li>Programming and implementation of The Fool, the playable chess pawn in the game. Added moves such as a rook-themed dash and a bishop-themed
+                                    grappling hook in accordance to the broader chess theme of the game.
+                                </li>
+                                <li>Programming and implementation of all objects, obstacles and hazards, including the moving platforms, spikes, door and key, conveyor belt, and more.</li>
+                                <li>Level design of the first level, including tutorialisation, and the final level.</li>
+                                <img src="games/the fools folly 1.png" alt="The Fool's Folly Final Level" width="40%" height="40%">
+                                <img src="games/the fools folly 2.png" alt="The Fool's Folly Final Level 2" width="40%" height="40%">
+                                <img src="games/the fools folly 3.png" alt="The Fool's Folly Tutorial" width="40%" height="40%">
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>ShowBiz!</strong> <br>
+                            A tabletop card game that has players taking turns drawing cards to hire actors and expending funds to create a jaw-dropping movie that will stun
+                            both audiences and critics at the box office. <br>
+                            Contributions:
+                            <ul class="sub">
+                                <li>Main game concept, including the gameplay premise, game rules, and card mechanics</li>
+                                <li>Designed every Genre Card, Action Card and Crew Card, including the card design, card art, card descriptions and card stats.</li>
+                                <img src="games/showbiz crew cards.png" alt="ShowBiz! Crew Cards" width="40%" height="40%">
+                                <img src="games/showbiz action cards.png" alt="ShowBiz! Action Cards" width="40%" height="40%">
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Oil Ocean</strong> <br>
+                            A 2D top-down tower defense game made in Unity 6 revolving around the narrative of a lone military guard defending a neglected oil refinery from the onslaught of sea creatures infected by oil spills. <br>
+                            <a href="https://www.youtube.com/watch?v=fH6FrtMaRrc">Gameplay Trailer</a> 
+                            <a href="https://www.youtube.com/watch?v=uMhIsVgl0sA">Gameplay Video</a> <br>
+                            Contributions:
+                            <ul class="sub">
+                                <li>Main game concept, including the gameplay premise, turret mechanics, narrative design and enemy fish concepts.</li>
+                                <li>Modified waypoint editor that allows branching pathways.</li>
+                                <li>Dynamic tilemap that is activated when purchasing turrets, displaying green tiles on places where turrets can be placed that update in real-time.</li>
+                                <li>Level design for two of the six levels in the game.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Sundown</strong> <br>
+                            A 3D orthographic stealth survival game made in Unreal Engine 5 where you control a vampire that must eliminate those who seek to banquish him before they successfully summon the sun that will disintegrate him. <br>
+                            Contributions:
+                            <ul class="sub">
+                                <li>Main game concept, including the gameplay premise, character design, mechanic conceptualisation and NPC behaviour.</li>
+                                <li>Scripting of the character controller using Blueprint Visual Scripting, including player input and player movement adapted to an orthographic camera.</li>
+                                <li>Interactable objects that can be picked up in-game and thrown at a fixed trajectory.</li>
+                                <li>Cloak that has a limiting meter that recharges over time once disabled, and drains meter when activated.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Wishing Upon the Stars Above</strong> <br>
+                            A 2D side-scrolling platformer made with Pygame depicting a terminally ill climber scaling a supernatural mountain with her partner, with both seeking permanent cures to the diseases that crippled their lives. <br>
+                            Contributions:
+                            <ul class="sub">
+                                <li>Scripting of constant weather elements by simulating the drawing of thousands of shape particples that are animated in the level's background, including snow, rain and lightning.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>                
+                <button type="button" class="collapsible">
+                    <h3 class="section-header">3D Modelling Projects</h3>
+                </button>
+                <div class="texts">
+                    <ul>
+                        <li>
+                            <strong>Metal Gear REX Replica</strong> <br>
+                            A replica of the Metal Gear REX bipedal tank from Hideo Kojima's 1998 PS1 classic, Metal Gear Solid. Made in Autodesk 3DS Max and textured using Adobe Substance 3D Painter. <br>
+                            <img src="3d models/metal gear rex.png" alt="Metal Gear Rex" width="40%" height="40%">
+                            <img src="3d models/metal gear rex 3d.png" alt="Metal Gear Rex Model" width="40%" height="40%">
+                        </li>
+                        <li>
+                            <strong>Office Environment with Scripting</strong> <br>
+                            A well-furnished office environment with an office chair, a couch, a designer glass table, and an automatic rotating ceiling fan. <br>
+                            Scripting was used to add books of random colour and width to the bookshelves, make the ceiling fan spin, and simulate papers being blown out a window.
+                            <img src="3d models/office environment.png" alt="Office Environment" width="40%" height="40%">
+                            <img src="3d models/main objects.png" alt="Office Objects" width="40%" height="40%">
+                            <img src="3d models/rendering.png" alt="Office Render 1" width="40%" height="40%">
+                            <img src="3d models/rendering 2.png" alt="Office Render 2" width="40%" height="40%">
+                        </li>
+                        <li>
+                            <strong>John Gambling - 3D Character Model</strong> <br>
+                            An original character inspired by the Metal Gear Solid series which was modelled in Z-Brush, unwrapped and UV-mapped in Blender, textured using Adobe Substance 3D Painter and 
+                            rendered using Marmoset Toolbag. <br>
+                            <img src="3d models/john gambling highpoly.png" alt="John Gambling Highpoly" width="12%" height="12%">
+                            <img src="3d models/john gambling lowpoly.png" alt="John Gambling Lowpoly" width="16%" height="16%">
+                            <img src="3d models/john gambling.png" alt="John Gambling Render" width="20%" height="20%">
+                            <img src="3d models/gambling gun.png" alt="Gambling Gun Render" width="40%" height="40%">
+                        </li>
+                    </ul>
+                </div>
+                <button type="button" class="collapsible">
+                    <h3 class="section-header">Game Concepts</h3>
+                </button>
+                <div class="texts">
+                    <ul>
+                        <li>
+                            <strong>Inspired</strong> <br>
+                            <p>Inspired is a 2D puzzle platformer that depicts an artist (represented by a stick figure avatar) suffering from burnout seeking inspiration from browsing pictures on an art-sharing site 
+                            infested by AI-generated content. Throughout their journey, the player character
+                            must utilise their tools as an artist to explore different
+                            artworks across the website and come face-to-face against AI imagery that physically manifests
+                            as corrupted creatures that attempt to ‘kill’ the player character’s motivation. At the end of a
+                            level, they will encounter a boss creature that is a cheap, artificially created imitation of the
+                            original artwork, which they unveil upon defeating the boss and uncover a certain element about
+                            the drawing that gives them inspiration for theirs.</p>
+
+                            <p>Gameplay involves the usage of commonly used tools in digital painting such as
+                            the Brush, Eraser, and Lasso tools. Atypical to common platforming tropes, the player
+                            character’s mobility is somewhat restrained, curtailed by a short jump distance which prevents
+                            them from effortlessly transitioning between pictures. Instead, players are encouraged to be
+                            creative with the utilisation of their tools to allow them to traverse their environment in a quick
+                            and effective manner. For example, the player can use the Lasso to latch onto a protruding object
+                            from a drawing positioned higher, therefore allowing them to climb towards that platform.</p>
+
+                            <p>Attempting to impede the player character is the antagonistic force of the game, an
+                            artificial intelligence (AI) image generating software entitled UDream, which manifests itself in
+                            the form of glitchy, corrupted beings. Some of these beings are level assets such as glitched
+                            blocks and spikes which may obstruct the level’s main pathway and must be overcome using
+                            alternative solutions, whereas some are mobile enemies who must either be evaded or defeated
+                            using the game’s basic combat system. This involves the usage of the brush to slash at weak
+                            spots visible on the enemies’ sprite and using the eraser as a makeshift shield to block incoming
+                            attacks.</p>
+
+                            <img src="uni projects/inspired 1.png" alt="Inspired Concept 1" width="40%" height="40%">
+                            <img src="uni projects/inspired 2.png" alt="Inspired Concept 2" width="40%" height="40%">
+                            <img src="uni projects/inspired 3.png" alt="Inspired Concept 3" width="40%" height="40%">
+                        </li>
+                        <li>
+                            <strong>Retro Revolt</strong> <br>
+                            <p>Retro Revolt is a 2D Metroidvania themed around the concept of lost media. It stars Cee Arty, a humanoid figure capable of manifesting physical projections from their
+                                giant, clunky CRT screen-shaped head. As a mysterious electrical storm engulfs the skies of Retropolis and corrupts its inhabitants to the will of an unseen evil, players must control Cee Arty through the various
+                                sections of Retropolis’ underground layout to defeat a gauntlet of mini-bosses, freeing their
+                                “souls” from the spirit’s corruption to gain their abilities or radio frequencies.
+                            </p>
+                            <p>Cee Arty's gameplay is defined by their unique Reality Byte ability, which enhances their abilities while in a
+                            more glitched, corrupted state; players must press the LB button to trigger Reality Byte, allowing
+                            Cee to perform Reality Byte abilities by performing specific inputs. For example, in the
+                            mid-game players can bind X and right to launch an uppercut fist from Cee’s screen, or bind X
+                            and up to launch a peashooter reminiscent of the weapons from the Cuphead series. Additional
+                            Reality Byte abilities can be unlocked by exploring the world of Retropolis, either as rewards
+                            from bosses that were purified, or as secret unlockables discovered by solving environmental
+                            puzzles across both the surface and the underground networks.
+                            </p>
+                            <a href="CGDD ASSIGNMENT.pdf">Further explanations about this game concept can be viewed in this document.</a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <hr class="divider">
+            <section id = "other">
+                <h2 class="section-header">
+                    <span>📋</span> OTHER PROJECTS
+                </h2>
+                <button type="button" class="collapsible">
+                    <h3 class="section-header">Sonicvivor</h3>
+                </button>
+                <div class="texts">
+                    <ul>
+                        <li>Sonicvivor is a Sonic-themed Online Reality Game (ORG) based on the acclaimed CBS reality TV show Survivor, hosted entirely on Discord.</li>
+                        <li>I serve as the main host of the game, organising the format of the game, planning and scheduling challenges, recruiting people to play the game, and designing the large majority
+                            of the graphics used in a season.
+                        </li>
+                    </ul>
+                </div>
+                <button type="button" class="collapsible">
+                    <h3 class="section-header">Offstage Malaysia</h3>
+                </button>
+                <div class="texts">
+                    <ul>
+                        <li>Offstage Malaysia is the leading Super Smash Bros. Ultimate community in Malaysia, frequently organising local tournaments at their home state of Selangor.</li>
+                        <li>I've contributed as a match commentator frequently during these tournaments, while also having credits as a scriptwriter / writer for certain pieces of official media.</li>
+                        <li>The most notable example would be the official recap of Offstage's flagship tournament in 2025, hosted during the AniManGaki convention at Mines International Exhibition Convention Center.</li>
+                        <a href="https://www.youtube.com/watch?v=DiS8O3Ars5U">The official AniManGaki Tournament Recap. I wrote the script and narrated this video!</a>
+                    </ul>
+                </div>
+            </section>
+            <hr class="divider">
+            <section id = "works">
+                <h2 class="section-header">
+                    <span>👔</span> WORK EXPERIENCE
+                </h2>
+                <button type="button" class="collapsible">
+                    <p>During two intervals from July 2022 to March 2023, and July 2024 to September 2024, I worked part-time as an assistant administrator at Good International School, formerly Good School.
+                        My responsibilities while working in that position included logging student attendance, handling incoming lunch deliveries, organising and tracking supplies, receptionist duties,
+                        librarian duties and organising loose bills.
+                    </p>
+                    <p>I was also a contributor to Good School's subsequent relocation and conversion into an official international school, assisting with the distribution of new uniforms while also reorganising and 
+                        structuring the new library.
+                    </p>
+                </button>
+            </section>
+            <hr class="divider">   
+            <h1>CONTACT ME</h1>   
+            <div class="container">
+                <div class="centered">
+                    <a href="https://linktr.ee/shingenx" class="btn">Linktree</a>
+                    <a href="malito:alternateaccoun17@gmail.com" class="btn">Email</a>
+                </div>
+            </div>  
+        </div>
+        <script>
+            function openNav() {
+                document.getElementById("sidenav").style.width = "250px";
+                document.getElementById("mainPage").style.marginLeft = "250px";
+            }
+
+            /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+            function closeNav() {
+                document.getElementById("sidenav").style.width = "0";
+                document.getElementById("mainPage").style.marginLeft = "0";
+            }
+            
+            var coll = document.getElementsByClassName("collapsible");
+            var i;
+
+            for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                content.classList.toggle("borderActive")
+                if (content.style.maxHeight){
+                content.style.maxHeight = null;
+                } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+            }
+
+            let slideIndex = 1;
+            showSlides(slideIndex);
+
+            // Next/previous controls
+            function plusSlides(n) {
+            showSlides(slideIndex += n);
+            }
+
+            // Thumbnail image controls
+            function currentSlide(n) {
+            showSlides(slideIndex = n);
+            }
+
+            function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("imageSlides");
+            let dots = document.getElementsByClassName("demo");
+            let captionText = document.getElementById("caption");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].className += " active";
+            captionText.innerHTML = dots[slideIndex-1].alt;
+            }
+        </script>
+    </body>
+</html>
